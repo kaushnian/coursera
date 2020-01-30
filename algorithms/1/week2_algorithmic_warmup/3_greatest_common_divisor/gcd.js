@@ -19,18 +19,6 @@ function readLine(line) {
   }
 }
 
-function gcd_brut(a, b) {
-  let divider = 1;
-  const n = a < b ? a : b;
-
-  for (let i = 2; i <= n; i++) {
-    if (a % i === 0 && b % i === 0) {
-      divider = i;
-    }
-  }
-  return divider;
-}
-
 function gcd(a, b) {
   let num1, num2;
 
@@ -44,12 +32,11 @@ function gcd(a, b) {
 
   let mod = num1 % num2;
 
-  if (mod === 0) {
-    console.log(num2);
-    return num2;
+  if (mod > 0) {
+    num2 = gcd(num2, mod);
   }
 
-  gcd(num2, mod);
+  return num2;
 }
 
 module.exports = gcd;
